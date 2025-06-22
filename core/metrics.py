@@ -1,0 +1,21 @@
+import torch
+
+def accuracy(ytrue,ypred):
+    return (ypred==ytrue).float().mean().item()
+
+def mae(ytrue,ypred):
+    return torch.abs(ypred-ytrue).mean().item()
+def mse(ypred,ytrue):
+    return 1/2*torch.mean((ypred - ytrue) ** 2).item()
+
+def recall(ytrue,ypred):
+    tp=((ypred==1) & (ytrue==1)).sum().item()
+    fn=((ypred==0) & (ytrue==1)).sum().item()
+    return tp/(tp+fn)
+def f1_score(ytrue,ypred):
+    return 2*(precision(ytrue,ypred)*recall(ytrue,ypred))/(precision(ytrue,ypred)+recall(ytrue,ypred))
+def precision(ytrue,ypred):
+    tp=((ypred==1) & (ytrue==1)).sum().item()
+    fp=((ypred==1) & (ytrue==0)).sum().item()
+    return tp/(tp+fp)
+

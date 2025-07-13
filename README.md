@@ -1,110 +1,105 @@
+🧠 SimpleDLFramework
+A lightweight deep learning framework built from scratch in Python, designed to help understand, build, and experiment with core deep learning components without relying on high-level libraries like PyTorch or TensorFlow.
 
-# SimpleDLFramework
-
-A lightweight deep learning framework built from scratch in Python to help understand and experiment with core deep learning techniques without relying on high-level libraries like PyTorch or TensorFlow.
-
-This framework implements key deep learning components such as custom regularization, optimization utilities, learning rate schedulers, model architectures, and more — with clean, modular code.
-
----
-
-## 📁 Project Structure
-
-```
+This framework includes essential deep learning building blocks like custom regularization, optimizers, learning rate schedulers, CNN and MLP architectures, and training strategies — organized into clean, modular, and well-documented code.
+📁 Project Structure
+graphql
+Copier
+Modifier
 core/
 │
-├── dropout.py                 # Dropout implementation
-├── dropout.md                 # Theory and explanation of dropout
-├── layres.py                  # Definition of neural network layers
-├── regularisation.py          # Regularization functions
-├── weight_decay.py            # Weight decay implementation
-├── weight_decay.md            # Explanation of weight decay
+├── Droupout_layer.py          # Dropout implementation
+├── MLp_initializers.py        # MLP weight initializers (Xavier, He, etc.)
+├── MLp_layer.py               # MLP fully connected layers
+├── losses.py                  # Loss functions (MSE, MAE, CrossEntropy…)
+├── metrics.py                 # Evaluation metrics (accuracy, etc.)
+├── model_structure.py         # Deep Learning model class (forward, backward, training loops)
+├── optimizers.py              # Gradient Descent, Momentum, Adam, etc.
 
-models/
+CNN/
 │
-├── linear_classification.ipynb  # Notebook for linear classification experiments
-├── linear_classification.md     # Notes and theory for linear classification
-├── linear_model.ipynb           # Notebook for basic linear models
-├── linear_model.md              # Documentation on linear model concepts
-├── mlp_model.ipynb              # Multilayer perceptron implementation and test
-├── mlp.md                       # Theory and notes for MLP models
+├── Loop_based_cnn/
+│   ├── Cnn_initializers.py    # CNN weight initializers
+│   ├── Cnn_layers.py          # CNN convolution/maxpool/batchnorm layers (loop-based)
+│   ├── Cnn_operations.py      # Convolution and pooling operations (loop-based)
+│
+├── Vectorised_Cnn_operations/
+│   ├── Vectorised_Cnn_operations.py  # Vectorized Conv2D, MaxPooling, etc.
+│   ├── Vec_cnn_Layers.py             # Vectorized CNN layers (Conv, MaxPool)
 
 utils/
 │
-├── early_stopping.py           # Early stopping implementation
-├── early_stopping.md           # Explanation and theory of early stopping
-├── gradient_clipping.py        # Gradient clipping implementation
-├── gradient_clipping.md        # Theory and use-cases for gradient clipping
-├── initializers.py             # Weight initialization techniques
-├── initializers.md             # Documentation for initializers
-├── learning_rate.py            # Learning rate scheduling strategies
-├── learning_rate.md            # Notes and theory for learning rate schedules
-```
+├── activations.py             # Activation functions (ReLU, Sigmoid, Softmax…)
+├── batch_normalization_Layer.py  # Custom BatchNorm implementation
+├── data_manipulation.py       # Data splitting and k-fold cross-validation
+├── dropuout_Layer.py          # Dropout implementation (alternative)
+├── initializers.py            # Initializers utilities
+├── learning_rate.py           # Learning rate scheduling methods
+├── weight_decay.py            # Weight decay (L2 regularization)
 
----
+data/
+│
+├── MNIST/
+│   └── raw/                   # MNIST dataset files (.gz and extracted)
 
-## 📚 Features
+notebooks/
+│
+├── regression_MLP.ipynb       # Regression with MLP notebook
+├── Multi_classification_MLP.ipynb  # Multi-class MLP classification notebook
+├── single_perceptron.ipynb    # Simple perceptron test
+├── Iris.ipynb                 # Iris dataset classification
+├── California_housing.ipynb   # Regression on housing dataset
+├── loop_based_mnist.ipynb     # MNIST classification with Loop-based CNN
+├── Vec_Cnn_mnist.ipynb        # MNIST classification with vectorized CNN
 
-- **Dropout Regularization**  
-  Custom implementation of dropout to prevent overfitting during training.
+utils/
+├── *.md                       # Theory explanations (dropout, weight decay, learning rate…)
 
-- **Weight Decay (L2 Regularization)**  
-  Adds a penalty to the loss function based on the magnitude of weights to improve generalization.
+.git/                          # Git version control files
+📚 Features
+✅ MLP & CNN architectures from scratch
 
-- **Gradient Clipping**  
-  Prevents exploding gradients by limiting the gradient values during backpropagation.
+✅ Loop-based and vectorized CNN implementations
 
-- **Early Stopping**  
-  Stops training when the model performance on a validation set stops improving.
+✅ Dropout & Batch Normalization
 
-- **Custom Initializers**  
-  Xavier, He, and uniform/normal initialization strategies for neural network weights.
+✅ Weight Decay (L2 Regularization)
 
-- **Learning Rate Scheduling**  
-  Includes step decay, factor decay, cosine annealing, and warmup scheduling methods.
+✅ Gradient Descent, Momentum, Adagrad, RMSProp, Adam optimizers
 
-- **Simple Model Architectures**  
-  Linear models and multilayer perceptrons (MLPs) implemented and tested via notebooks.
+✅ Learning Rate Schedulers (step decay, factor decay…)
 
----
+✅ Early Stopping
 
-## 📖 Goal
+✅ Custom loss functions (MSE, MAE, CrossEntropy…)
 
-This framework is intended for learning and experimentation purposes — allowing developers, students, and researchers to:
+✅ Data split & Cross-validation utilities
 
-- Understand core deep learning concepts by implementing them manually.
-- Customize and visualize every part of the training pipeline.
-- Experiment with optimization and regularization techniques on real datasets.
-- Build intuition on model training dynamics without relying on abstracted high-level APIs.
+✅ Clean modular code, fully documented
 
----
+📖 Goal
+This framework is intended for learning, experimentation, and educational purposes — allowing developers, students, and researchers to :
 
-## 🚀 Usage
+Understand and implement deep learning concepts by coding them from scratch.
 
-Clone this repository and start experimenting:
+Customize every part of the training process.
 
-```bash
-git clone https://github.com/your-username/SimpleDLFramework.git
-cd SimpleDLFramework
-```
+Experiment with optimization, regularization, and model architectures on real datasets.
 
-You can then run the provided Jupyter notebooks inside the `models/` directory to test various models and techniques.
+Visualize and debug the training pipeline without the abstraction of high-level APIs.
 
----
+📌 Requirements
+Python 3.x
 
-## 📌 Requirements
+Numpy
 
-- Python 3.x
-- Numpy
-- Torch (for tensor operations only — optional)
+Torch (for tensor operations only — no nn.Module used)
 
----
-
-## 📄 License
-
+📄 License
 This project is open-source and available for educational and personal use.
 
----
+📣 Author
+Created by Hebou Abdelraouf as a personal deep learning framework for building, testing, and optimizing AI models from scratch.
 
-## 📣 Author
 
-Created by **[Your Name]** as a personal deep learning framework for understanding, testing, and optimizing machine learning models from scratch.
+
